@@ -1,12 +1,13 @@
+import models.User;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class LoginTests extends TestBase {
     @BeforeMethod
-    public void precondition(){
+    public void precondition() {
         //if sign out present --->log out
-        if(app.getHelperUser().isLogged()){
+        if (app.getHelperUser().isLogged()) {
             app.getHelperUser().logout();
         }
     }
@@ -27,6 +28,19 @@ public class LoginTests extends TestBase {
     }
 
     @Test
+    public void loginSuccess1() {
+        User user = new User().setEmail("natalia.kaminsky142857@gmail.com").setPassword("7Zhizney!");
+
+        app.getHelperUser().openLoginRegistrationForm();
+        app.getHelperUser().fillLoginRegistrationForm1(user);
+        app.getHelperUser().submitLogin();
+
+        Assert.assertTrue(app.getHelperUser().isLogged());
+
+
+    }
+
+    @Test
     public void loginSuccessModel() {
         app.getHelperUser().openLoginRegistrationForm();
         app.getHelperUser().fillLoginRegistrationForm("natalia.kaminsky142857@gmail.com", "7Zhizney!");
@@ -42,7 +56,7 @@ public class LoginTests extends TestBase {
     }
 
     @Test
-    public void loginWrongEmail(){
+    public void loginWrongEmail() {
         app.getHelperUser().openLoginRegistrationForm();
         app.getHelperUser().fillLoginRegistrationForm("natalia.kaminsky142857gmail.com", "7Zhizney!");
         app.getHelperUser().submitLogin();
