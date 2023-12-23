@@ -36,7 +36,7 @@ public class HelperBase {
         return !list.isEmpty();
     }
 
-    ;
+
 
     public boolean isAlertPresent(String message) {
         Alert alert = new WebDriverWait(wd, 10).until(ExpectedConditions.alertIsPresent());
