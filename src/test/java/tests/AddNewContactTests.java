@@ -39,7 +39,7 @@ public class AddNewContactTests extends TestBase {
 
 
     }
-
+//firefox
     @Test(groups = {"smoke","regress","retest"})
     public void addContactSuccessRequiredFields() {
         int i = (int) (System.currentTimeMillis() / 1000 % 3600);
